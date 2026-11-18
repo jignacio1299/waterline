@@ -13,7 +13,7 @@ nn.on('load', () => {
   
   init();
   
-  makeGrid(); // Debug grid with coordinates
+  // makeGrid(); // Debug grid with coordinates
   
   desert.make();
   town.make();

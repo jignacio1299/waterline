@@ -16,7 +16,7 @@ export function make() {
     makeBuilding(850, 900, 250, 200);
     makeBuilding(100, 500, 200, 400);
     makeBuilding(500, 400, 250, 300);
-    makeBuilding(1000, 200, 300, 400);
+    makeBuilding(1000, 300, 300, 400);
     
     for(let i = 0; i < 15; i++) {
       makeItem(playerData);
@@ -78,6 +78,8 @@ export function make() {
       pos(width() / 2 - 100, height() - 100),
 
       color(BLACK),
+      opacity(0),
+      
       area(),
       body(),
       "exit"
@@ -85,13 +87,13 @@ export function make() {
     
     const guard1 = add([
       sprite("guard", { flipX: true }),
-      scale(0.3),
+      scale(0.2),
       pos(1150, 700),
     ]);
     
     const guard2 = add([
       sprite("guard"),
-      scale(0.3),
+      scale(0.2),
       pos(300, 300)
     ])
     
