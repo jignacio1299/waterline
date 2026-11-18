@@ -1,5 +1,6 @@
+import { Enemy } from "../classes/enemy.js";
 export function make() {
-  scene("Arena", () => {
+  scene("arena", (playerData) => {
     
     setBackground(rgb(198, 178, 128));
     
@@ -19,8 +20,16 @@ export function make() {
       color(BLACK),
       text("Arena", {}),
       
-    ])
-  })
+    ]);
+    
+    let enemy = new Enemy();
+    
+    for(let i = 0; i < 5; i++) {
+      
+      enemy.addEnemy();
+    }
+    
+  }) // End Scene
 }
 
 function setControls(player) {

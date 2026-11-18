@@ -30,12 +30,30 @@ export function make() {
       }),
       anchor("center")
     ])
+    const arena = add([
+      rect(150, 150, { radius: 16 }),
+      pos(460, 700),
+      color(rgb(120, 120, 120)),
+      area(),
+      anchor("center"),
+      z(1),
+      "arena"
+    ]);
+    arena.add([
+      pos(0, 0),
+      z(0),
+      text("Arena", {
+        size: 35,
+        align: "center"
+      }),
+      anchor("center")
+    ])
     for(let i = 0; i < 30; i++) {
       makeCactus();
     
     }
+    // End Scene
   });
-  
   
   
   
@@ -59,6 +77,12 @@ function makePlayer(playerData) {
     playerData.spawnPosX = width() / 2;
     playerData.spawnPosY = height() - 200;
     go("town", playerData);
+  });
+  
+  player.onCollide("arena", () => {
+    playerData.spawnPosX = width() / 2;
+    playerData.spawnPosY = height() / 2;
+    go("arena", playerData);
   });
   
   return player;
@@ -87,7 +111,6 @@ function setControls(player) {
 function makeCactus() {
   let x = rand(100, width() - 100);
   let y = rand(100, height() - 100);
-  console.log(x, y)
 
   const newCactus = add([
     sprite("cactus"),

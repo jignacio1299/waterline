@@ -2,7 +2,7 @@ import * as desert from "../scenes/desert.js";
 import * as town from "../scenes/town.js";
 import * as shops from "../scenes/shops.js";
 import * as arena from "../scenes/arena.js";
-import { PlayerData } from "./player-data.js";
+import { PlayerData } from "../classes/player-data.js";
 import { init } from "./init.js";
 
 
