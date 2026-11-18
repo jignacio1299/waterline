@@ -1,4 +1,3 @@
-// import * as inputs from "./input-handler.js";
 import * as desert from "../scenes/desert.js";
 import * as town from "../scenes/town.js";
 import * as shops from "../scenes/shops.js";
@@ -27,9 +26,9 @@ nn.on('load', () => {
   go("desert", playerData);
   
   // Uncomment to load Town 1 scene on startup
-  playerData.spawnPosX = width() / 2;
-  playerData.spawnPosY = height() - 200;
-  go("town", playerData);
+  // playerData.spawnPosX = width() / 2;
+  // playerData.spawnPosY = height() - 200;
+  // go("town", playerData);
 
   
   // const player = add([

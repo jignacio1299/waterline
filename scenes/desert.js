@@ -30,19 +30,27 @@ export function make() {
       }),
       anchor("center")
     ])
+    for(let i = 0; i < 30; i++) {
+      makeCactus();
+    
+    }
   });
+  
+  
+  
   
 }
 
 function makePlayer(playerData) {
   const player = add([
-      sprite("player"),
-      pos(playerData.spawnPosX, playerData.spawnPosY),
-      anchor("center"),
-      scale(0.15),
-      area(),
-      z(10),
-      "player"
+    sprite("player"),
+    pos(playerData.spawnPosX, playerData.spawnPosY),
+    anchor("center"),
+    scale(0.15),
+    area(),
+    body(),
+    z(10),
+    "player"
     ]);
   
   setControls(player);
@@ -55,9 +63,6 @@ function makePlayer(playerData) {
   
   return player;
 }
-
-// function 
-
 
 // Keyboard input
 function setControls(player) {
@@ -77,4 +82,20 @@ function setControls(player) {
       player.move(SPEED, 0);
       player.flipX = false;
     });
+}
+
+function makeCactus() {
+  let x = rand(100, width() - 100);
+  let y = rand(100, height() - 100);
+  console.log(x, y)
+
+  const newCactus = add([
+    sprite("cactus"),
+    pos(x, y),
+    scale(0.08),
+    // area(),
+    // body({ isStatic: true }),
+
+    "cactus"
+  ])
 }

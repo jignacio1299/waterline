@@ -36,11 +36,16 @@ export function init() {
 }
 
 function loadSprites() {
+  // Characters
   loadSprite("player", "assets/sprites/player.png");
   loadSprite("guard", "assets/sprites/guard.png");
   
+  // Items
   loadSprite("rope", "assets/sprites/rope.webp");
   loadSprite("battery", "assets/sprites/battery.png");
+  
+  // Environment
+  loadSprite("cactus", "assets/sprites/cactus.jpg");
   
   loadSound("wind", "assets/sounds/wind_sfx.mp3");
   loadSound("walk", "assets/sounds/sand_walk_sfx.mp3");
