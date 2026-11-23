@@ -1,4 +1,7 @@
 import { Enemy } from "../classes/enemy.js";
+import { Turret } from "../classes/turret.js";
+
+
 export function make() {
   scene("arena", (playerData) => {
     
@@ -22,29 +25,39 @@ export function make() {
       
     ]);
     
-    let enemy = new Enemy();
-    
-    for(let i = 0; i < 5; i++) {
-      
-      enemy.addEnemy();
-    }
+    loop(8, () => {
+      for(let i = 0; i < 15; i++) {
+        let enemy = new Enemy();
+        enemy.add();
+      }
+    });
+  
     
   }) // End Scene
 }
 
 function setControls(player) {
   const SPEED = 300;
-    onButtonDown("moveUp", () => {
-      player.move(0, -SPEED);
-    });
+  onButtonDown("moveUp", () => {
+    player.move(0, -SPEED);
+  });
 
-    onButtonDown("moveDown", () => {
-      player.move(0, SPEED);
-    });
-    onButtonDown("moveLeft", () => {
-      player.move(-SPEED, 0);
-    });
-    onButtonDown("moveRight", () => {
-      player.move(SPEED, 0);
-    });
+  onButtonDown("moveDown", () => {
+    player.move(0, SPEED);
+  });
+  onButtonDown("moveLeft", () => {
+    player.move(-SPEED, 0);
+  });
+  onButtonDown("moveRight", () => {
+    player.move(SPEED, 0);
+  });
+  onButtonPress("placeTurret", () => {
+    const newTurret = new Turret();
+    newTurret.place(player.pos.x, player.pos.y)
+  })
+}
+
+// TODO: Parameterize wave difficulty with suspicion meter
+function spawnWave() {
+  
 }

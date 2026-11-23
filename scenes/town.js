@@ -158,7 +158,7 @@ function makeBuilding(x, y, width = 200, height = 200, buildingColor = rgb(120, 
 }
 
 function makeItem(playerData) {
-  const itemsArray = ["rope", "battery"];
+  const itemsArray = ["rope", "battery", "scrap_metal"];
   
   let ind = randi(0, itemsArray.length);
   let item = itemsArray[ind];

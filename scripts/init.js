@@ -20,8 +20,9 @@ export function init() {
         keyboard: ["right", "d"],
         gamepad: ["dpad-right"],
       },
-      o: {
-        keyboard: ["o"]
+      placeTurret: {
+        keyboard: ["f"],
+        gamepad: ["east"],
       },
     },
     
@@ -43,6 +44,7 @@ function loadSprites() {
   // Items
   loadSprite("rope", "assets/sprites/rope.webp");
   loadSprite("battery", "assets/sprites/battery.png");
+  loadSprite("scrap_metal", "assets/sprites/scrap_metal.png");
   
   // Environment
   loadSprite("cactus", "assets/sprites/cactus.jpg");
