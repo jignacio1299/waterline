@@ -60,52 +60,43 @@ export function make() {
 }
 
 function makePlayer(playerData) {
-  const player = add([
-    sprite("player"),
-    pos(playerData.spawnPosX, playerData.spawnPosY),
-    anchor("center"),
-    scale(0.15),
-    area(),
-    body(),
-    z(10),
-    "player"
-    ]);
+  const player = playerData.makePlayer();
   
-  setControls(player);
+  player.scale = vec2(0.15);
   
-  player.onCollide("town1", () => {
-    playerData.spawnPosX = width() / 2;
-    playerData.spawnPosY = height() - 200;
-    go("town", playerData);
+  const SPEED = 300;
+  onButtonDown("moveUp", () => {
+    player.move(0, -SPEED);
+  });
+
+  onButtonDown("moveDown", () => {
+    player.move(0, SPEED);
+  });
+  onButtonDown("moveLeft", () => {
+    player.move(-SPEED, 0);
+    player.flipX = true;
+  });
+  onButtonDown("moveRight", () => {
+    player.move(SPEED, 0);
+    player.flipX = false;
   });
   
+  // player.onCollide("town1", () => {
+    
+    
+  // });
+  
+  onCollide("player", "town1", () => {
+    playerData.spawnPos = vec2(width() / 2, height() - 200);
+    go("town", playerData);
+  })
+  
   player.onCollide("arena", () => {
-    playerData.spawnPosX = width() / 2;
-    playerData.spawnPosY = height() / 2;
+    playerData.spawnPos = vec2(width() / 2, height() / 2);
     go("arena", playerData);
   });
   
   return player;
-}
-
-// Keyboard input
-function setControls(player) {
-  const SPEED = 300;
-    onButtonDown("moveUp", () => {
-      player.move(0, -SPEED);
-    });
-
-    onButtonDown("moveDown", () => {
-      player.move(0, SPEED);
-    });
-    onButtonDown("moveLeft", () => {
-      player.move(-SPEED, 0);
-      player.flipX = true;
-    });
-    onButtonDown("moveRight", () => {
-      player.move(SPEED, 0);
-      player.flipX = false;
-    });
 }
 
 function makeCactus() {

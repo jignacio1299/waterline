@@ -8,10 +8,10 @@ import { init } from "./init.js";
 
 nn.on('load', () => {
   
-  
+  init();
   let playerData = new PlayerData();
   
-  init();
+  
   
   // makeGrid(); // Debug grid with coordinates
   
@@ -21,34 +21,13 @@ nn.on('load', () => {
   arena.make();
   
   
-  playerData.spawnPosX = width() / 2;
-  playerData.spawnPosY = height() / 2;
+  playerData.spawnPos = vec2(width() / 2, height() / 2);
   go("desert", playerData);
   
   // Uncomment to load Town 1 scene on startup
   // playerData.spawnPosX = width() / 2;
   // playerData.spawnPosY = height() - 200;
   // go("town", playerData);
-
-  
-  // const player = add([
-  //   sprite("player"),
-  //   pos(100, 100),
-  //   scale(0.5),
-  //   "player"
-  // ]);
-  
-  // const ropeSprite = add([
-  //   sprite("rope"),
-  //   pos(100, 300),
-  //   "rope"
-  // ]);
-  
-  // const battery = add([
-  //   sprite("battery"),
-  //   pos(300, 300),
-  //   "battery"
-  // ]);
   
   // const windSnd = play("wind");
   // const walkSnd = play("walk");

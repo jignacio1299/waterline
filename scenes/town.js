@@ -102,46 +102,33 @@ export function make() {
 }
 
 function makePlayer(playerData) {
-  const player = add([
-    sprite("player"),
-    pos(playerData.spawnPosX, playerData.spawnPosY),
-    anchor("center"),
-    scale(0.3),
-    area(),
-    body(),
-    "player"
-  ]);
+  const player = playerData.makePlayer(vec2(0.33));
   
-  setControls(player);
+  const SPEED = 300;
+  onButtonDown("moveUp", () => {
+    player.move(0, -SPEED);
+  });
+
+  onButtonDown("moveDown", () => {
+    player.move(0, SPEED);
+  });
+  onButtonDown("moveLeft", () => {
+    player.move(-SPEED, 0);
+    player.flipX = true;
+  });
+  onButtonDown("moveRight", () => {
+    player.move(SPEED, 0);
+    player.flipX = false;
+  });
   
   player.onCollide("exit", () => {
-    playerData.spawnPosX = 160;
-    playerData.spawnPosY = 450;
+    playerData.spawnPos = vec2(160, 450);
     go("desert", (playerData))
-  })
+  });
   
   return player;
 }
 
-function setControls(player) {
-  const SPEED = 300;
-    onButtonDown("moveUp", () => {
-      player.move(0, -SPEED);
-    });
-
-    onButtonDown("moveDown", () => {
-      player.move(0, SPEED);
-    });
-    onButtonDown("moveLeft", () => {
-      player.move(-SPEED, 0);
-      player.flipX = true;
-    });
-    onButtonDown("moveRight", () => {
-      player.move(SPEED, 0);
-      player.flipX = false;
-    });
-  
-}
 
 function makeBuilding(x, y, width = 200, height = 200, buildingColor = rgb(120, 120, 120)) {
   add([
