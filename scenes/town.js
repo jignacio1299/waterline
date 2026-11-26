@@ -58,6 +58,7 @@ export function make() {
       rect(100, height(), { radius: 16}),
       color(rgb(53, 20, 18)),
       pos(width() - 100, 0),
+      z(3),
       
       area(),
       body({ isStatic: true })
@@ -145,7 +146,7 @@ function makeBuilding(x, y, width = 200, height = 200, buildingColor = rgb(120, 
 }
 
 function makeItem(playerData) {
-  const itemsArray = ["rope", "battery", "scrap_metal"];
+  const itemsArray = ["rope", "battery", "scrap"];
   
   let ind = randi(0, itemsArray.length);
   let item = itemsArray[ind];

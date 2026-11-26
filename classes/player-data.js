@@ -8,14 +8,17 @@ export class PlayerData {
     this.speed = 300;
     
     this.inv = {
-      rope: 0,
-      battery: 0,
+      "rope": 0,
+      "battery": 0,
+      "wires": 0,
+      "scrap": 0
       // Add more items down here
     }
     
     
     
   }
+  
   makePlayer(newScale = vec2(0.3)) {
     console.log("S");
     
@@ -40,11 +43,67 @@ export class PlayerData {
     ]);
     
     this.gameObj.onCollide("arena", () => {
-    this.spawnPos = vec2(width() / 2, height() / 2);
-    go("arena", this);
-  });
+      this.spawnPos = vec2(width() / 2, height() / 2);
+      go("arena", this);
+    });
   
-    
     return this.gameObj;
+  }
+  
+  showInventory() {
+    const invScreen = add([
+      rect(width() - 400, height() - 400, { radius: 50 }),
+      pos(200, 200),
+      
+      color(rgb(120, 120, 120)),
+      outline(4, { color: BLACK }),
+      opacity(0.9),
+      z(1000000),
+      
+      "inventory"
+    ]);
+    
+    const itemContainer = invScreen.add([
+      rect(100, 100, { radius: 5 }),
+      pos(100, 100),
+      anchor("center"),
+      
+      color(rgb(120, 120, 120)),
+      outline(3, { color: BLACK }),
+      
+    ]);
+    
+    const itemSprite = itemContainer.add([
+      sprite("rope"),
+      scale(0.3),
+      pos(0, 0),
+      anchor("center")
+    ])
+    
+    const itemCount = itemContainer.add([
+      circle(20),
+      pos(45, 45),
+      anchor("center"),
+      
+      color(rgb(120, 120, 120)),
+      outline(2, { color: BLACK })
+    ]);
+    
+    const itemVal = itemCount.add([
+      text(this.inv["rope"], {
+        size: 25,
+      }),
+      anchor("center"),
+      pos(0, 0)
+    ])
+    
+  }
+  
+  hideInventory() {
+    const invScreen = get("inventory");
+    
+    if(invScreen && invScreen.exists()) {
+      destroy(invScreen);
+    }
   }
 }

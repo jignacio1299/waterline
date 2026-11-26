@@ -43,6 +43,7 @@ function makePlayer(playerData) {
   const player = playerData.makePlayer(vec2(0.33));
   
   const SPEED = 300;
+  playerData.gameObj.speed = 600;
   onButtonDown("moveUp", () => {
     player.move(0, -SPEED);
   });

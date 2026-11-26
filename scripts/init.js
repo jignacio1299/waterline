@@ -24,6 +24,10 @@ export function init() {
         keyboard: ["f"],
         gamepad: ["east"],
       },
+      inventory: {
+        keyboard: ["e", "i"],
+        gamepad: ["start"],
+      }
     },
     
     // Canvas
@@ -38,16 +42,18 @@ export function init() {
 
 function loadSprites() {
   // Characters
-  loadSprite("player", "assets/sprites/player.png");
-  loadSprite("guard", "assets/sprites/guard.png");
+  loadSprite("player", "assets/sprites/characters/player.png");
+  loadSprite("guard", "assets/sprites/characters/guard.png");
   
   // Items
-  loadSprite("rope", "assets/sprites/rope.webp");
-  loadSprite("battery", "assets/sprites/battery.png");
-  loadSprite("scrap_metal", "assets/sprites/scrap_metal.png");
+  loadSprite("rope", "assets/sprites/items/rope.webp");
+  loadSprite("battery", "assets/sprites/items/battery.png");
+  loadSprite("scrap", "assets/sprites/items/scrap.png");
   
   // Environment
-  loadSprite("cactus", "assets/sprites/cactus.jpg");
+  loadSprite("cactus", "assets/sprites/environment/cactus.jpg");
+  loadSprite("town", "assets/sprites/environment/town.png");
+  loadSprite("camp", "assets/sprites/environment/camp.png");
   
   loadSound("wind", "assets/sounds/wind_sfx.mp3");
   loadSound("walk", "assets/sounds/sand_walk_sfx.mp3");

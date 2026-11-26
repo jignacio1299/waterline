@@ -53,6 +53,9 @@ export function make() {
     
     }
     // End Scene
+    
+    
+  playerData.showInventory();
   });
   
   
@@ -80,6 +83,12 @@ function makePlayer(playerData) {
     player.move(SPEED, 0);
     player.flipX = false;
   });
+  
+  onGamepadStick("left", (value, gamepad) => {
+    player.move(value.scale(SPEED))
+  })
+
+  
   
   // player.onCollide("town1", () => {
     
