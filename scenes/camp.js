@@ -1,5 +1,5 @@
 export function make() {
-  scene("shops", () => {
+  scene("camp", () => {
     
     setBackground(rgb(198, 178, 128));
     

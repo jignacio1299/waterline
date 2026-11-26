@@ -1,6 +1,6 @@
 import * as desert from "../scenes/desert.js";
 import * as town from "../scenes/town.js";
-import * as shops from "../scenes/shops.js";
+import * as camp from "../scenes/camp.js";
 import * as arena from "../scenes/arena.js";
 import { PlayerData } from "../classes/player-data.js";
 import { init } from "./init.js";
@@ -13,11 +13,11 @@ nn.on('load', () => {
   
   
   
-  // makeGrid(); // Debug grid with coordinates
+  makeGrid(); // Debug grid with coordinates
   
   desert.make();
   town.make();
-  shops.make();
+  camp.make();
   arena.make();
   
   

@@ -1,6 +1,5 @@
 export function init() {
   kaplay({
-    
     // button setup
 
     buttons: {
@@ -33,6 +32,8 @@ export function init() {
     // Canvas
     focus: false,
     width: 1500, height: 1200,
+    stretch: true,
+    letterbox: true
     
   });
   
@@ -46,9 +47,12 @@ function loadSprites() {
   loadSprite("guard", "assets/sprites/characters/guard.png");
   
   // Items
-  loadSprite("rope", "assets/sprites/items/rope.webp");
-  loadSprite("battery", "assets/sprites/items/battery.png");
-  loadSprite("scrap", "assets/sprites/items/scrap.png");
+  loadSprite("rope", "assets/sprites/items/rope.webp"); // TODO: PLACEHOLDER
+  loadSprite("battery", "assets/sprites/items/battery.png"); // TODO: PLACEHOLDER
+  loadSprite("scrap", "assets/sprites/items/scrap.png"); // TODO: RESIZE
+  loadSprite("wires", "assets/sprites/items/wires.jpeg"); // TODO: PLACEHOLDER
+  loadSprite("nails", "assets/sprites/items/nails.jpg"); // TODO: PLACEHOLDER
+  loadSprite("plastic", "assets/sprites/items/plastic.png"); // TODO: PLACEHOLDER
   
   // Environment
   loadSprite("cactus", "assets/sprites/environment/cactus.jpg");

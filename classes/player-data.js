@@ -8,20 +8,33 @@ export class PlayerData {
     this.speed = 300;
     
     this.inv = {
+      // Crafting items
       "rope": 0,
       "battery": 0,
       "wires": 0,
-      "scrap": 0
-      // Add more items down here
+      "scrap": 0,
+      "wires": 0,
+      "nails": 0,
+      "plastic": 0,
+      
+      // Turrets TODO: IMPLEMENT
+      "turretA": 0, 
+      "turretB": 0,
+      "turretC": 0,
+      
+      // Traps TODO: IMPLEMENT
+      "trapA": 0,
+      "trapB": 0,
+      "trapC": 0,
+      
+      // Water
+      "water": 0 // liters
     }
-    
     
     
   }
   
   makePlayer(newScale = vec2(0.3)) {
-    console.log("S");
-    
     if(this.gameObj) {
       this.gameObj.pos = this.spawnPos;
       this.gameObj.scale = newScale;
@@ -53,8 +66,8 @@ export class PlayerData {
   
   showInventory() {
     const invScreen = add([
-      rect(width() - 400, height() - 400, { radius: 50 }),
-      pos(200, 200),
+      rect(width() / 2 - 100, height() - 400, { radius: 50 }),
+      pos(100, 200),
       
       color(rgb(120, 120, 120)),
       outline(4, { color: BLACK }),
@@ -64,18 +77,46 @@ export class PlayerData {
       "inventory"
     ]);
     
-    const itemCategory = invScreen.add([
-      text("Items"),
-      pos(50, 50)
+    // ITEMS
+    const itemsLabel = invScreen.add([
+      text("Items", { size: 30 }),
+      pos(50, 90)
     ]);
+    // Items list row 1
+    for(let i = 0; i < 3; i++) {
+      const itemContainer = invScreen.add(
+        this.makeInvContainer(vec2(100 + 125 * i, 175), i));
+    } // End items row 1
+    // Items list row 2
+    for(let i = 3; i < 6; i++) {
+      const itemContainer = invScreen.add(
+        this.makeInvContainer(vec2(100 + 125 * (i - 3), 300), i));
+
+    } // End row 2
     
-    // Items list
-    const itemsArr = ["rope", "battery", "scrap", ];
+    // Turrets
+    const turretsLabel = invScreen.add([
+      text("Turrets", { size: 30 }),
+      pos(50, 425)
+    ])
+    const turretsArr = ["turretA", "turretB", "turretC"];
+    for(let i = 0; i < turretsArr.length; i++) {
+      
+    }
     
-    for(let i = 0; i < itemsArr.length; i++) {
-      const itemContainer = invScreen.add([
+    
+    // Traps
+    
+    // Water tank
+    
+  }
+  
+  makeInvContainer(containerPos, i) {
+    const itemsArr = ["rope", "battery", "scrap", "wires", "nails", "plastic"];
+    const scalesArr = [0.3, 0.3, 0.15, 0.08, 0.08, 0.05];
+    const newContainer = make([
         rect(100, 100, { radius: 5 }),
-        pos(100 + 150 * i, 150),
+        pos(containerPos),
         anchor("center"),
 
         color(rgb(120, 120, 120)),
@@ -83,14 +124,14 @@ export class PlayerData {
 
       ]);
 
-      const itemSprite = itemContainer.add([
+      const itemSprite = newContainer.add([
         sprite(itemsArr[i]),
-        scale(0.3),
+        scale(scalesArr[i]),
         pos(0, 0),
         anchor("center")
-      ])
+      ]);
 
-      const itemCount = itemContainer.add([
+      const itemCount = newContainer.add([
         circle(20),
         pos(45, 45),
         anchor("center"),
@@ -106,14 +147,7 @@ export class PlayerData {
         anchor("center"),
         pos(0, 0)
       ]);
-    } // End items list
-    
-    // Turrets
-    
-    // Traps
-    
-    // Water tank
-    
+    return newContainer;
   }
   
   hideInventory() {
