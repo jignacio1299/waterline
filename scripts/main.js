@@ -13,7 +13,7 @@ nn.on('load', () => {
   
   
   
-  makeGrid(); // Debug grid with coordinates
+  // makeGrid(); // Debug grid with coordinates
   
   desert.make();
   town.make();
@@ -32,7 +32,7 @@ nn.on('load', () => {
   // const windSnd = play("wind");
   // const walkSnd = play("walk");
   
-})
+});
 
 function makeGrid() {
   for(let x = 100; x < width(); x += 100) {
@@ -47,7 +47,7 @@ function makeGrid() {
       
       stay(),
       z(10000)
-    ])
+    ]);
   }
   
   for(let y = 100; y < height(); y += 100) {
@@ -62,7 +62,7 @@ function makeGrid() {
       
       stay(),
       z(10000)
-    ])
+    ]);
   }
 }
 

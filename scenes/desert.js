@@ -55,7 +55,7 @@ export function make() {
     // End Scene
     
     
-  playerData.showInventory();
+  // playerData.showInventory();
   });
   
   
@@ -85,8 +85,8 @@ function makePlayer(playerData) {
   });
   
   onGamepadStick("left", (value, gamepad) => {
-    player.move(value.scale(SPEED))
-  })
+    player.move(value.scale(SPEED));
+  });
 
   
   

@@ -5,7 +5,6 @@ export class PlayerData {
     
     this.health = 100;
     this.money = 100;
-    this.speed = 300;
     
     this.inv = {
       // Crafting items
@@ -28,8 +27,8 @@ export class PlayerData {
       "trapC": 0,
       
       // Water
-      "water": 0 // liters
-    }
+      "water": 0, // liters
+    };
     
     
   }
@@ -66,7 +65,7 @@ export class PlayerData {
   
   showInventory() {
     const invScreen = add([
-      rect(width() / 2 - 100, height() - 400, { radius: 50 }),
+      rect(width() / 2 - 150, height() - 400, { radius: 50 }),
       pos(100, 200),
       
       color(rgb(120, 120, 120)),
