@@ -136,12 +136,35 @@ TownTile.prototype.placepipe=function(){
   }}
 
  //get a tile based on player cordinates from the base tile....
- tilenode.getTile=function(playerX, playerY){
+ //for the love of all that is holy use this safely --Bharat
+ tilenode.getTile=function(x, y){
   //get the tile based on player coordinates from the base tile, and return it, if it does not exist, then generate it, and return it
-  let xDiff=playerX-tilenode.baseTile.x;
-  let yDiff=playerY-tilenode.baseTile.y;
-  let currentTile=tilenode.baseTile;
-while(xd)
+  var currenT=tilenode.baseTile;
+  
+  while(x){
+  if(x<0){  
+    currenT=currenT.prevX;
+    x++;
+  
+
+  }else{
+    currenT=currenT.nextX;
+  x--;
+  }
+//safety go burr
+}
+while(y){
+if(y<0){  
+    currenT=currenT.prevY;
+    y++;
+  
+
+  }else{
+    currenT=currenT.nextY;
+  y--;
+  }
+
+}
 
 //tilenode will have a static method called generateTiles() which generates a 50 x 50 grid of new tiles around the player when needed
 //of course, with all the nexts and stuff updated with it as well so that everything is filled in, 
@@ -149,7 +172,7 @@ tilenode.generateTiles=function(playerX, playerY){
   //remember, randomly, you can get a town, or camp tile, too, but those are less frequent than desert tiles, and they are generated in a 50 x 50 grid around the player, with the player in the center, and the tiles are generated randomly, but with a higher chance of desert tiles, and a lower chance of town and camp tiles, and also with a chance of an arena tile, but that is very rare
   let tileArr=[];
   for(let x=playerX-25; x<playerX+25; x++){
-    var prevxtile=
+    //var prevxtile=
     for(let y=playerY-25; y<playerY+25; y++){
       let rand=Math.random();
       
